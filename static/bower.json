@@ -1,0 +1,21 @@
+{
+  "name": "smart-india-store",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "1o01 <wengwangjay@126.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.2.0"
+  }
+}
