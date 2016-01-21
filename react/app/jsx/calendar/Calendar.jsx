@@ -26,48 +26,49 @@ var Calendar = React.createClass({
 		this.setState({toDay: toDay});
 	},
 	createMonthArray: function(year, month){ // 生成当前月份的整个日期排序
-		var weekArray = [];
-		var weeksArray = [];
+		var weekArray = []; // 存放一周的天数
+		var weeksArray = []; // 存放一整个月的天数，一个子数组为一周
 
-		var _moment = new moment();
+		var _moment = new moment(); // new moment 才能保证设置年、月等属性时是有效的
 		var toDay = this.state.toDay;
 
 		var _year = year? year : toDay.yyyy;
 		var _month = month? month : toDay.mm;
 
-		_moment.set({'year': _year, 'month': _month});
+		_moment.set({'year': _year, 'month': _month}); // 设置年、月
 
-		var days = _moment.daysInMonth();
+		var days = _moment.daysInMonth(); // 获取当前月份下的天数
 
-		var dayInfo = {};
+		var dayInfo = {}; // 初始一个每天的详情对象
 
-		for(var d=1; d<days+1; d++){
-			_moment.set('date', d);
+		for(var d=1; d<days+1; d++){ // 根据当前月份的天数生成，日期对应星期的数组
 
-			var day = _moment.day();
+			_moment.set('date', d);  // 设置日期
 
-			dayInfo.yyyy = _year;
-			dayInfo.mm = _month;
-			dayInfo.dd = d;
-			dayInfo.day = day;
-			dayInfo.ymd = _moment.format('YYYY-MM-DD');
+			var day = _moment.day(); // 获取星期
 
-			if(day == 0){
-				weekArray[6] = dayInfo;
+			dayInfo.yyyy = _year; // 年
+			dayInfo.mm = _month; // 月
+			dayInfo.dd = d; // 日
+			dayInfo.day = day; // 星期
+			dayInfo.ymd = _moment.format('YYYY-MM-DD'); // 年-月-日
+
+			if(day == 6){ // 判断是否为星期六 为周六则需要结束该子数组
+				weekArray[day] = dayInfo;
 				weeksArray.push(weekArray.concat());
 				weekArray = [];
-			}else if(d==days){
-				weekArray[day-1] = dayInfo;
+			}else if(d==days){ // 判断是否为最后一天 最后一天也需要结束该子数组
+				weekArray[day] = dayInfo;
 				weeksArray.push(weekArray.concat());
 			}else{
-				weekArray[day-1] = dayInfo;
+				weekArray[day] = dayInfo;
 			}
 
 			dayInfo = {}
 
 		}
 
-		for(var w in weeksArray){
+		for(var w in weeksArray){ // 将为空的部分填充上空
 			for(var d=0; d<7; d++){
 				if(typeof(weeksArray[w][d]) == 'undefined'){
 					weeksArray[w][d] = '';
@@ -116,9 +117,6 @@ var Calendar = React.createClass({
 		this.setState({toDay: toDay})
 		this.createMonthArray()
 	},
-	init: function(year, month){ // 日历初始化
-
-	},
 	render: function(){
 		var toDay = this.state.toDay;
 		return(
@@ -143,8 +141,7 @@ var Calendar = React.createClass({
 					</ul>
 					<CalendarBody calendarState={this.state}/>
 				</div>
-			</div>
-			
+			</div>	
 		)
 	}
 
