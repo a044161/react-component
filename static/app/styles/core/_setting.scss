@@ -1,0 +1,60 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// setting scss
+//-----------------------------------------------------
+
+// font相关
+//-----------------------------------------------------
+$baseFontSize:          14px !default;     //by pxx
+$fontCn:                "SimSun"; //宋体
+$fontYaHei:             "Microsoft Yahei"; //微软雅黑
+$fontHeiTi:             "SimHei"; //黑体
+
+
+// 元素上下间距
+//-----------------------------------------------------
+$baseGap:               20px !default;
+
+
+// 基本颜色
+// color function : http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
+// lighten($color, $amount)
+// darken($color, $amount)
+// opacify($color, $amount)
+// mix($color1, $color2[, $amount])
+//-----------------------------------------------------
+// $black:                 #000 !default;
+// $grayDarker:            #333 !default;
+// $grayDark:              #999 !default;
+// $gray:                  #ccc !default;
+// $grayLight:             #f5f5f5 !default;
+// $white:                 #fff !default;
+
+$red:                   #cc3300 !default;
+$blue:                  #00A3CF !default;
+$blueDark:              #0064cd !default;
+
+$primary:               #0078E7 !default;//主色
+
+
+// 交互配色
+// 警告，错误，成功，提示
+//-----------------------------------------------------
+// 每个变量都有三个颜色值，分别为：文本色，背景色，边框色
+$warningColor:               #514721 #FFF6BF #FFD324 !default;
+$errorColor:                 #8A1F11 #FBE3E4 #FBC2C4 !default;
+$successColor:               #264409 #E6EFC2 #C6D880 !default;
+$infoColor:                  #205791 #D5EDF8 #92CAE4 !default;
+
+
+// radius
+//-----------------------------------------------------
+$baseRadius:            5px !default;    
+$smallRadius:           3px !default;
+
+
+// hover动画时长  by pxx
+//-----------------------------------------------------
+$tranShort: 0.3s;
+$tranNormal: 0.5s;
+$tranLong: 0.8s;

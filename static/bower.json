@@ -1,13 +1,10 @@
 {
   "name": "smart-india-store",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.0",
   "authors": [
-    "1o01 <wengwangjay@126.com>"
+    "dctrue <dctrue.jiang@gmail.com>"
   ],
-  "license": "ISC",
-  "moduleType": [],
-  "homepage": "",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,7 +12,10 @@
     "test",
     "tests"
   ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  },
   "devDependencies": {
-    "jquery": "~2.2.0"
+    "jquery": "1.8.3"
   }
 }
