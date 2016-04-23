@@ -1,0 +1,75 @@
+.ui-list{
+	width: 100%;
+	.input-group{
+		display: block;
+		width: 100%;
+		margin-bottom: 10px;
+		.list-input{
+			width: 80%;
+			height: 38px;
+			border: 2px solid $gray;
+			line-height: 38px;
+			font-size: 16px;
+			padding: 0 18px;
+			margin-right: 8px;
+			outline: none;
+			&:focus{
+				border-color: $blue;
+			}
+		}
+		.icon{
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			background: url(../images/icon-list-add.png) center no-repeat, $green;
+			vertical-align: middle;
+			cursor: pointer;
+			&:hover{
+				background-color: #03c890;
+			}
+			&:active{
+				background-color: #01805c;
+			}
+		}
+	}
+	.list-body{
+		width: 100%;
+		.list-item{
+			width: 100%;
+			height: 50px;
+			padding: 0 13px;
+			background-color: $gray;
+			margin-bottom: 14px;
+			display: table;
+			&:hover{
+				background-color: $green;
+				color: #fff;
+			}
+			.item-text{
+				max-width: 800px;
+				display: table-cell;
+				vertical-align: middle;
+				word-break: break-all;
+			}
+			.icon{
+				width: 40px;
+				height: 20px;
+				display: table-cell;
+				margin-left: 10px;
+				cursor: pointer;
+				&.delete{
+					background: url(../images/icon-list-delete.png) center no-repeat;
+					&:hover{
+						background: url(../images/icon-list-delete-focus.png) center no-repeat;
+					}
+				}
+				&.edite{
+					background: url(../images/icon-list-pencil.png) center no-repeat;
+					&:hover{
+						background: url(../images/icon-list-pencil-focus.png) center no-repeat;
+					}
+				}
+			}
+		}
+	}
+}

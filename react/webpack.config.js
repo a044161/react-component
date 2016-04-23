@@ -1,38 +1,39 @@
-var webpack = require('webpack');
-// var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
-// var path = require('path');
-// var nodeModulesPath = path.resolve(__dirname, 'node_modules');
+'use strict';
 
-module.exports = {
+const path = require('path');
+const args = require('minimist')(process.argv.slice(2));
 
-    entry: {
-        calendar : [
-            'webpack-dev-server/client?http://127.0.0.1:7777', // WebpackDevServer host and port
-            'webpack/hot/dev-server',
-            './app/jsx/entry.jsx'
-    ]},
-    output: {
-        publicPath: "/js",
-        path: '/js',
-        filename: '[name].js'
-    },
-    module: {
-        loaders: [
-            { test: /\.jsx$/, loader: 'jsx-loader', exclude: /node_modules/ },
-          
-        ]
-    },
-    plugins: [
-        new webpack.ProvidePlugin({
-            React : "react",
-            ReactDOM: "react-dom",
-            ReactAddons: "react-addons",
-            $: "jquery",
-            jQuery: "jquery",
-            "window.jQuery": "jquery"
-        }),
-        new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"'}),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.HotModuleReplacementPlugin()
-    ]
+// List of allowed environments
+const allowedEnvs = ['dev', 'dist', 'test'];
+
+// Set the correct environment
+var env;
+if(args._.length > 0 && args._.indexOf('start') !== -1) {
+  env = 'test';
+} else if (args.env) {
+  env = args.env;
+} else {
+  env = 'dev';
+}
+process.env.REACT_WEBPACK_ENV = env;
+
+// Get available configurations
+const configs = {
+  base: require(path.join(__dirname, 'cfg/base')),
+  dev: require(path.join(__dirname, 'cfg/dev')),
+  dist: require(path.join(__dirname, 'cfg/dist')),
+  test: require(path.join(__dirname, 'cfg/test'))
 };
+
+/**
+ * Build the webpack configuration
+ * @param  {String} wantedEnv The wanted environment
+ * @return {Object} Webpack config
+ */
+function buildConfig(wantedEnv) {
+  let isValid = wantedEnv && wantedEnv.length > 0 && allowedEnvs.indexOf(wantedEnv) !== -1;
+  let validEnv = isValid ? wantedEnv : 'dev';
+  return configs[validEnv];
+}
+
+module.exports = buildConfig(env);

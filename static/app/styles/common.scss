@@ -3,13 +3,18 @@
 // 导入core中的基础文件
 //-----------------------------------------------------
 @import "core/reset";
-// @import "core/setting";
+@import "core/setting";
 
 // 公用模块
 //-----------------------------------------------------
 // @import "layout";
-// @import "ui";
+@import "ui";
 
 // 各模块样式表
 //-----------------------------------------------------
-@import "calendar";
+@import "components/calendar"; // 日历组件样式
+@import "components/inputtext"; // 输入框组件样式
+@import "components/radio"; // 单选框组件样式
+@import "components/checkbox"; // 多选框组件样式
+@import "components/dropdownlist"; // 下拉列表组件样式
+@import "components/todolist"; // todolist组件样式

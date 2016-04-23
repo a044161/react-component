@@ -1,0 +1,35 @@
+.ui-input{
+	width: 100%;
+	.input-body{
+		width: 100%;
+		height: 40px;
+		padding: 0 15px;
+		border: 1px solid $gray;
+		outline: none;
+		font-size: 16px;
+		&:focus{
+			border-color: $blue;
+		}
+		&:hover{
+			box-shadow: 0 0 1px rgba(0, 0, 0, .5);
+		}
+	}
+	&.success{
+		.input-body{
+			border-color: $green;
+		}
+	}
+	&.error{
+		.input-body{
+			border-color: $red;
+			color: $red;
+		}
+	}
+	&.disabled{
+		.input-body{
+			border-color: $gray;
+			cursor: not-allowed;
+			color: $gray;
+		}
+	}
+}

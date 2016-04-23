@@ -1,0 +1,36 @@
+.ui-checkbox{
+	display: inline-block;
+	cursor: pointer;
+	margin-right: 30px;
+	&:hover{
+		.checkbox-body{
+			box-shadow: 0 0 1px rgba(0, 0, 0, .5);
+		}
+	}
+	.input-hidden{
+		opacity: 0;
+		position: absolute;
+	}
+	.checkbox-body{
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		border: 1px solid $gray;
+		margin-right: 10px;
+		vertical-align: middle;
+		background: #fff;
+	}
+	.checkbox-text{
+		font-size: 16px;
+	}
+}
+
+.ui-checkbox{
+	&.on{
+		.checkbox-body{
+			padding: 7px;
+			background-color: $green;
+			background-clip: content-box;
+		}
+	}
+}

@@ -1,0 +1,14 @@
+.ui-label{
+	display: block;
+	width: 100%;
+	height: 40px;
+	font-size: 18px;
+	line-height: 40px;
+	margin-bottom: 10px;
+	.label-sign{
+		display: inline-block;
+		color: $green;
+		margin-right: 10px;
+		vertical-align: middle;
+	}
+}
