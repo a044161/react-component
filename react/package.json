@@ -64,8 +64,10 @@
   },
   "dependencies": {
     "core-js": "^2.0.0",
+    "moment": "^2.13.0",
     "normalize.css": "^3.0.3",
     "react": "^0.14.0",
+    "react-addons": "^0.9.1-deprecated",
     "react-dom": "^0.14.0"
   }
 }
