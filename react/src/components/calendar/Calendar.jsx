@@ -1,7 +1,7 @@
 import React from 'react';
+import moment from 'moment';
 
 import CalendarBody from './CalendarBody.jsx';
-import moment from 'moment';
 
 class Calendar extends React.Component{
 	constructor(props){
@@ -11,6 +11,7 @@ class Calendar extends React.Component{
 			monthEn: ['January ', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octorber', 'November', 'December'],
 			weeksArray:[] // 存储当前月份的日期
 		}
+
 	}
 	componentDidMount(){
 		this.getNowDate();
@@ -34,26 +35,26 @@ class Calendar extends React.Component{
 		this.setState({toDay: toDay});
 	}
 	createMonthArray(year, month){ // 生成当前月份的整个日期排序
-		var weekArray = []; // 存放一周的天数
-		var weeksArray = []; // 存放一整个月的天数，一个子数组为一周
+		let weekArray = []; // 存放一周的天数
+		let weeksArray = []; // 存放一整个月的天数，一个子数组为一周
 
-		var _moment = new moment(); // new moment 才能保证设置年、月等属性时是有效的
-		var toDay = this.state.toDay;
+		let _moment = new moment(); // new moment 才能保证设置年、月等属性时是有效的
+		let toDay = this.state.toDay;
 
-		var _year = year? year : toDay.yyyy;
-		var _month = month? month : toDay.mm;
+		let _year = year? year : toDay.yyyy;
+		let _month = month? month : toDay.mm;
 
 		_moment.set({'year': _year, 'month': _month}); // 设置年、月
 
-		var days = _moment.daysInMonth(); // 获取当前月份下的天数
+		let days = _moment.daysInMonth(); // 获取当前月份下的天数
 
-		var dayInfo = {}; // 初始一个每天的详情对象
+		let dayInfo = {}; // 初始一个每天的详情对象
 
-		for(var d=1; d<days+1; d++){ // 根据当前月份的天数生成，日期对应星期的数组
+		for(let d=1; d < days+1; d++){ // 根据当前月份的天数生成，日期对应星期的数组
 
 			_moment.set('date', d);  // 设置日期
 
-			var day = _moment.day(); // 获取星期
+			let day = _moment.day(); // 获取星期
 
 			dayInfo.yyyy = _year; // 年
 			dayInfo.mm = _month; // 月
@@ -76,8 +77,8 @@ class Calendar extends React.Component{
 
 		}
 
-		for(var w in weeksArray){ // 将为空的部分填充上空
-			for(var d=0; d<7; d++){
+		for(let w in weeksArray){ // 将为空的部分填充上空
+			for(let d=0; d < 7; d++){
 				if(typeof(weeksArray[w][d]) == 'undefined'){
 					weeksArray[w][d] = '';
 				}
@@ -130,12 +131,12 @@ class Calendar extends React.Component{
 		return(
 			<div className="ui-calendar">
 				<div className="header">
-					<span className="arrow-left" onClick={this.handlePreMonth}>&lt;</span>
+					<span className="arrow-left" onClick={this.handlePreMonth.bind(this)}>&lt;</span>
 					<p className="date">
 						<span className="month">{toDay.mmEn}</span>
 						<span className="year">{toDay.yyyy}</span>
 					</p>
-					<span className="arrow-right" onClick={this.handleNextMonth}>&gt;</span>
+					<span className="arrow-right" onClick={this.handleNextMonth.bind(this)}>&gt;</span>
 				</div>
 				<div className="body">
 					<ul className="week-list">

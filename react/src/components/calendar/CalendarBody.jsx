@@ -2,13 +2,17 @@ import React from 'react';
 import ReactAddons from 'react-addons';
 
 class CalendarBody extends React.Component{
+
+	constructor(props){
+		super(props);
+	}
 	renderDay(day, key){ // 渲染每一天
+		let toDay = this.props.calendarState.toDay;
 
-		var toDay = this.props.calendarState.toDay;
-		console.log(toDay)
-		var cx = ReactAddons.classSet;
+		let cx = ReactAddons.classSet;
 
-		var isToday = function(){
+		let isToday = function(){
+
 			if(toDay.ymd == day.ymd){
 				return true;
 			}else{
@@ -16,7 +20,8 @@ class CalendarBody extends React.Component{
 			}
 		}
 
-		var dayClass = cx({
+		let dayClass = cx({
+
 			'day-item': true,
 			'now': isToday()
 		})
@@ -26,9 +31,9 @@ class CalendarBody extends React.Component{
 		)
 	}
 	renderWeek(week, key){ // 渲染每一周
-		console.log(week)
-		var day = week.map(this.renderDay())
-		console.log(day)
+
+		let day = week.map(this.renderDay.bind(this))
+
 		return(
 			<ul key={key} className="day-list">
 				{day}
@@ -36,14 +41,17 @@ class CalendarBody extends React.Component{
 		)
 	}
 	render(){
-		var weeksArray = this.props.calendarState.weeksArray;
-		var week = weeksArray.map(this.renderWeek())
+
+		let weeksArray = this.props.calendarState.weeksArray;
+		let week = weeksArray.map(this.renderWeek.bind(this))
+
 		return(
 			<div>
 				{week}
 			</div>
 		)
 	}
-}
+
+}; 
 
 export default CalendarBody;
