@@ -23,10 +23,6 @@ class CheckBoxComponent extends React.Component{
 	render(){
 		return(
 			<div className="del-item">
-				<label className="ui-label">
-					<span className="label-sign">*</span>
-					<span className="label-text">{this.props.label}</span>
-				</label>
 				{this.props.options.map((item,index) => {
 					return (
 						<div key={index} ref={'checkbox-'+index} className="ui-checkbox" onClick={this.handleChecked.bind(this,index)}>
@@ -39,6 +35,10 @@ class CheckBoxComponent extends React.Component{
 			</div>
 		)
 	}
+}
+
+CheckBoxComponent.defaultProps = {
+	onChange(){},
 }
 
 export default CheckBoxComponent;

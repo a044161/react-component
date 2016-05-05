@@ -12,16 +12,21 @@ class InputTextComponent extends React.Component{
 	     this.setState({defaultValue: nextProps.value})  
 	}
 	render(){
+		let options = this.props.options;
 		return (
 			<div className="info-item ui-input">
 				<label className="ui-label">
 					<span className="label-sign">*</span>
-					<span className="label-text">{this.props.label}</span>
+					<span className="label-text">{options.label}</span>
 				</label>
-				<input className="input-body" placeholder={this.props.placeholder} value={this.state.defaultValue} onChange={this.props.onChange}/>
+				<input className="input-body" placeholder={options.placeholder} value={this.state.defaultValue} onChange={this.props.onChange}/>
 			</div>
 		)
 	}
+}
+
+InputTextComponent.defaultProps = {
+	defaultValue: '',
 }
 
 export default InputTextComponent;

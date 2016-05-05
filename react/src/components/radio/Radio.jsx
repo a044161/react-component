@@ -22,7 +22,7 @@ class RadioComponent extends React.Component{
 	    	}
 	    }
 	}
-	handleChecked(index,name){
+	handleChecked(index){
 		for(let i in this.refs){
 			ReactDOM.findDOMNode(this.refs[i]).className = 'ui-radio';
 		}
@@ -34,10 +34,6 @@ class RadioComponent extends React.Component{
 	render(){
 		return(
 			<div  className="option-item">
-				<label className="ui-label">
-					<span className="label-sign">*</span>
-					<span className="label-text">{this.props.label}</span>
-				</label>
 				{this.props.options.map((item, index) => {
 					return (
 						<div key={index} ref={'radio-'+ index} className="ui-radio" data-radio={item.name} onClick={this.handleChecked.bind(this,index)}>
@@ -50,6 +46,10 @@ class RadioComponent extends React.Component{
 			</div>
 		)
 	}
+}
+
+RadioComponent.defaultProps = {
+	onChange(){},
 }
 
 export default RadioComponent

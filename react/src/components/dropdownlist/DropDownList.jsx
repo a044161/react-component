@@ -44,4 +44,9 @@ class DropDownListComponent extends React.Component{
 	}
 }
 
+DropDownListComponent.defaultProps = {
+	defaultValue: 'select one...',
+	onSelect(){}
+}
+
 export default DropDownListComponent
